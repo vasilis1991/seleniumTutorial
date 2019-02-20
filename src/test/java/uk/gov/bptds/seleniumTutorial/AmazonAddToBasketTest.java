@@ -8,6 +8,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import uk.gov.bptds.seleniumTutorial.PageObject.AmazonHomePagePageObject;
 
 import java.util.List;
 
@@ -23,14 +24,15 @@ public class AmazonAddToBasketTest {
         System.setProperty("webdriver.chrome.driver",
                 this.getClass().getClassLoader().getResource("chromedriver").getPath());
         driver = new ChromeDriver();
+        driver.get("https://www.amazon.co.uk");
     }
     @Test
     //This is to take tha main url
     public void testSearchForProductAndAddToBasket(){
-        driver.get("https://www.amazon.co.uk");
         //assertThat("url is wrong", driver.getCurrentUrl(), is("https://www.amazon.co.uk/"));
-        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("selenium book");
-        driver.findElement(By.cssSelector("#nav-search > form > div.nav-right > div > input")).click();
+        AmazonHomePagePageObject amazonHomePagePageObject = new AmazonHomePagePageObject(driver);
+        amazonHomePagePageObject.searchForItem("Selenium books");
+
 
         List<WebElement> searchResults = driver.findElements(By.cssSelector("*> div > div > div > div.a-fixed-left-grid-col.a-col-right > div.a-row.a-spacing-small > div > a"));
         for(WebElement element : searchResults){
