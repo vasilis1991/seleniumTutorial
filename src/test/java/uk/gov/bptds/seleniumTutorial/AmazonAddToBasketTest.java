@@ -3,9 +3,15 @@ package uk.gov.bptds.seleniumTutorial;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
+
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -22,13 +28,34 @@ public class AmazonAddToBasketTest {
     //This is to take tha main url
     public void testSearchForProductAndAddToBasket(){
         driver.get("https://www.amazon.co.uk");
-        assertThat("url is wrong", driver.getCurrentUrl(), is("https://www.amazon.co.uk/"));
+        //assertThat("url is wrong", driver.getCurrentUrl(), is("https://www.amazon.co.uk/"));
+        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("selenium book");
+        driver.findElement(By.cssSelector("#nav-search > form > div.nav-right > div > input")).click();
+
+        List<WebElement> searchResults = driver.findElements(By.cssSelector("*> div > div > div > div.a-fixed-left-grid-col.a-col-right > div.a-row.a-spacing-small > div > a"));
+        for(WebElement element : searchResults){
+            try {
+                if (element.getText().equals("Mastering Selenium WebDriver")) {
+                    element.click();
+                }
+            } catch(StaleElementReferenceException e) {
+                // do nothing
+            }
+        }
+
+        assertThat("Not on book product page", driver.getTitle(), containsString("Mastering Selenium WebDriver"));
+        WebElement addBasket = driver.findElement(By.id("add-to-cart-button"));
+        addBasket.click();
+        WebElement proceedCheckout = driver.findElement(By.cssSelector("#hlb-ptc-btn-native-bottom"));
+        proceedCheckout.click();
+        assertThat("url is correct", driver.getCurrentUrl(), is("https://www.amazon.co.uk/ap/signin?_encoding=UTF8&openid.assoc_handle=amazon_checkout_gb&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.mode=checkid_setup&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.ns.pape=http%3A%2F%2Fspecs.openid.net%2Fextensions%2Fpape%2F1.0&openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.co.uk%2Fgp%2Fbuy%2Fsignin%2Fhandlers%2Fcontinue.html%3Fie%3DUTF8%26brandId%3D%26cartItemIds%3D%26eGCApp%3D%26hasWorkingJavascript%3D0%26isEGCOrder%3D0%26isFresh%3D0%26oldCustomerId%3D%26oldPurchaseId%3D%26preInitiateCustomerId%3D%26purchaseInProgress%3D%26ref_%3Dcart_signin_submit%26siteDesign%3D&pageId=amazon_checkout_gb&showRmrMe=0&siteState=isRegularCheckout.1%7CIMBMsgs.%7CisRedirect.0"));
+
 
     }
     @After
     //This is to turn down the window
     public void turnDown(){
-        driver.quit();
+        //driver.quit();
     }
 
 
