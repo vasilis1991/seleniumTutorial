@@ -2,6 +2,7 @@ package uk.gov.bptds.seleniumTutorial.PageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 
 public class AmazonHomePagePageObject {
@@ -21,4 +22,14 @@ public class AmazonHomePagePageObject {
         return new SearchResultPageObject(driver);
     }
 
+    public AddToBasketPageObject addToBasket() {
+
+        WebElement addBasket = driver.findElement(By.id("one-click-button"));
+        addBasket.click();
+
+        return new AddToBasketPageObject(driver);
+    }
+
+
 }
+

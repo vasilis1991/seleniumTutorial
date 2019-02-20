@@ -8,6 +8,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import uk.gov.bptds.seleniumTutorial.PageObject.AddToBasketPageObject;
 import uk.gov.bptds.seleniumTutorial.PageObject.AmazonHomePagePageObject;
 import uk.gov.bptds.seleniumTutorial.PageObject.SearchResultPageObject;
 
@@ -37,7 +38,8 @@ public class AmazonAddToBasketTest {
         searchResultPageObject.FindSpecificItemFromSearchResultsByTtile("The Book of Forgotten Authors");
 
 
-        assertThat("Not on book product page", driver.getTitle(), containsString("The Book of Forgotten Authors"));
+        //assertThat("Not on book product page", driver.getTitle(), containsString("The Book of Forgotten Authors"));
+        AddToBasketPageObject addToBasketPageObject = amazonHomePagePageObject.addToBasket();
         //WebElement addBasket = driver.findElement(By.id("add-to-cart-button"));
         //addBasket.click();
         //WebElement proceedCheckout = driver.findElement(By.cssSelector("#hlb-ptc-btn-native-bottom"));
@@ -49,7 +51,7 @@ public class AmazonAddToBasketTest {
     @After
     //This is to turn down the window
     public void turnDown(){
-        driver.quit();
+        //driver.quit();
     }
 
 
