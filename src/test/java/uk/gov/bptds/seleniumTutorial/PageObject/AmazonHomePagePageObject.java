@@ -13,10 +13,12 @@ public class AmazonHomePagePageObject {
     }
 
 
-    public void searchForItem(String searchTerm) {
+    public SearchResultPageObject searchForItem(String searchTerm) {
 
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys(searchTerm);
         driver.findElement(By.cssSelector("#nav-search > form > div.nav-right > div > input")).click();
+
+        return new SearchResultPageObject(driver);
     }
 
 }
