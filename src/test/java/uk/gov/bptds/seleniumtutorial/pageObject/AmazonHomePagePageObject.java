@@ -1,4 +1,4 @@
-package uk.gov.bptds.seleniumtutorial.PageObject;
+package uk.gov.bptds.seleniumtutorial.pageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -22,5 +22,11 @@ public class AmazonHomePagePageObject {
         return new SearchResultPageObject(driver);
     }
 
-}
+    public FindJobsPageObject searchForCareers() {
+        WebElement searchcareer = driver.findElement(By.xpath("//a[@href='https://www.amazon.jobs/en-gb']"));
+        searchcareer.click();
+        return new FindJobsPageObject(driver);
+    }
+
+    }
 

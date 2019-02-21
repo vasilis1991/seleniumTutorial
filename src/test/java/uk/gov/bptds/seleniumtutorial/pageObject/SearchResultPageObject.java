@@ -1,4 +1,4 @@
-package uk.gov.bptds.seleniumtutorial.PageObject;
+package uk.gov.bptds.seleniumtutorial.pageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -16,7 +16,7 @@ public class SearchResultPageObject {
         this.driver = driver;
     }
 
-    public void findSpecificItemFromSearchResultsByTtile(String specificItemTitle) {
+    public ProductPageObject findSpecificItemFromSearchResultsByTtile(String specificItemTitle) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         //We can use it instead of Thread sleep because is always better and when we meet the condition it continue and not wait instead
         List<WebElement> searchResults = wait.until(
@@ -34,15 +34,9 @@ public class SearchResultPageObject {
             }
         }
 
+        return new ProductPageObject(driver);
 
     }
 
-    public CheckOutPageObject addToBasket() {
-
-        WebElement addBasket = driver.findElement(By.id("one-click-button"));
-        addBasket.click();
-
-        return new CheckOutPageObject(driver);
-    }
 
 }
