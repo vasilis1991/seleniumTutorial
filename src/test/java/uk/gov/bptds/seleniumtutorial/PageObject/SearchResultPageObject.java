@@ -37,12 +37,12 @@ public class SearchResultPageObject {
 
     }
 
-    public AddToBasketPageObject addToBasket() {
+    public CheckOutPageObject addToBasket() {
 
         WebElement addBasket = driver.findElement(By.id("one-click-button"));
         addBasket.click();
 
-        return new AddToBasketPageObject(driver);
+        return new CheckOutPageObject(driver);
     }
 
 }

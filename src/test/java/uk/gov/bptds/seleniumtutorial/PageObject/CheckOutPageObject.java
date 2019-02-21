@@ -3,10 +3,10 @@ package uk.gov.bptds.seleniumtutorial.PageObject;
 
 import org.openqa.selenium.WebDriver;
 
-public class AddToBasketPageObject {
+public class CheckOutPageObject {
     private WebDriver driver;
 
-    public AddToBasketPageObject(WebDriver driver) {
+    public CheckOutPageObject(WebDriver driver) {
         this.driver = driver;
     }
 
