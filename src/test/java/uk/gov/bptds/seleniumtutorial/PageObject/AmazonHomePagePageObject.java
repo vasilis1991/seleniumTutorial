@@ -1,4 +1,4 @@
-package uk.gov.bptds.seleniumTutorial.PageObject;
+package uk.gov.bptds.seleniumtutorial.PageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,15 +21,6 @@ public class AmazonHomePagePageObject {
 
         return new SearchResultPageObject(driver);
     }
-
-    public AddToBasketPageObject addToBasket() {
-
-        WebElement addBasket = driver.findElement(By.id("one-click-button"));
-        addBasket.click();
-
-        return new AddToBasketPageObject(driver);
-    }
-
 
 }
 
