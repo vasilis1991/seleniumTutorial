@@ -37,7 +37,6 @@ public class AmazonAddToBasketTest {
         FindJobsPageObject findJobsPageObject = amazonHomePagePageObject.searchForCareers();
         JobsFoundObject jobsFoundObject = findJobsPageObject.findJobByLocationAndName("software engineer", "London");
         jobsFoundObject.addFilterJobsByCategory("Software Development");
-        jobsFoundObject.selectDistance(5);
         JobAndFilterPage jobLandPageToApply = jobsFoundObject.selectSpecificJob();
     }
 

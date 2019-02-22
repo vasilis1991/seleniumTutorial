@@ -24,17 +24,13 @@ public class JobsFoundObject {
 
     public void selectDistance(int targetDistance) {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("search-content-cover")));
-        WebElement distance = driver.findElements(By.xpath("//button[@data-label='" + targetDistance + "']")).get(0);
-        distance.click();
+        driver.findElement(By.xpath("//button[@data-label='" + targetDistance + "']")).click();
     }
 
     public JobAndFilterPage selectSpecificJob() {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("search-content-cover")));
-        WebElement specificJob = driver.findElement(By.xpath("//div[@data-job-id='730525']"));
-        specificJob.click();
-
+        driver.findElement(By.xpath("//div[@data-job-id='730525']")).click();
         return new JobAndFilterPage(driver);
-
     }
 }
 
