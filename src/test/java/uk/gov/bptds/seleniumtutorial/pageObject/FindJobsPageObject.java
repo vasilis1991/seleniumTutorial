@@ -36,7 +36,7 @@ public class FindJobsPageObject {
          try {
              for (int i = 0; i < list.size(); i++) {
                  System.out.println(list.get(i).getText());
-                 if (list.get(i).getText().contains("Greater London")) {
+                 if (list.get(i).getText().contains("London")) {
                      list.get(i).click();
                  }
              }
