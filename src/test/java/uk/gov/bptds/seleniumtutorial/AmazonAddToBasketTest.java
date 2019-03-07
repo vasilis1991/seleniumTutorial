@@ -81,10 +81,10 @@ public class AmazonAddToBasketTest {
     }
 
 
-    @Test
-    public void gmailCreationAccount() {
-        GmailSignUpPageObject gmailSignUpPageObject = new GmailSignUpPageObject(driver);
-        PhoneVerificationObject phoneVerificationObject = gmailSignUpPageObject.userdetails("vasaSs","adaasSda","da15AddDsd","adsKd4fWS3");
+    //@Test
+    //public void gmailCreationAccount() {
+       /* GmailSignUpPageObject gmailSignUpPageObject = new GmailSignUpPageObject(driver);
+        //PhoneVerificationObject phoneVerificationObject = gmailSignUpPageObject.userdetails();
         CodeVerificationPageObject codeVerificationPageObject = phoneVerificationObject.successfullRegistration("07479363987");
         RecoveryCompleteRegistrationPageObject recoveryCompleteRegistrationPageObject = codeVerificationPageObject.completeReg("922211");
         WelcomePageNewUserPageObject welcomePageNewUserPageObject = recoveryCompleteRegistrationPageObject.welcomeToGmail("07566982450","ntokasvasilis@hotmail.com","14","1991");
