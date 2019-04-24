@@ -1,4 +1,41 @@
-.idea/
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+*.DS_Store
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+.env
+
+# Testing library folders
+/.checkmarx
+/blackduck
+
+### IntelliJ IDEA ###
+.idea
+*.iws
 *.iml
-.DS_Store
-target/
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### DevOps ###
+/DevOps/vagrant/.vagrant*
+/DevOps/ansible/playbooks/roles*
+**/*.retry
+
+## Test reports
+*.gif
+*.html

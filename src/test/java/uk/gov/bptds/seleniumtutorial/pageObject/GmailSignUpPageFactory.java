@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GmailSignUpPageFactory {
     WebDriver driver;
@@ -32,6 +35,7 @@ public class GmailSignUpPageFactory {
     }
 
     public void setGmailFirstName(String newFirstName){
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(gmailFirstName)).click();
         gmailFirstName.click();
         gmailFirstName.sendKeys(newFirstName);
     }

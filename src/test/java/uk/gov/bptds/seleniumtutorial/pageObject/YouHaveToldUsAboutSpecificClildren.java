@@ -1,0 +1,26 @@
+package uk.gov.bptds.seleniumtutorial.pageObject;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class YouHaveToldUsAboutSpecificClildren {
+
+    private WebDriver driver;
+
+    public YouHaveToldUsAboutSpecificClildren(WebDriver driver) {
+
+        this.driver = driver;
+    }
+
+    public WhatIsTheOtherParentsName noAdditionalChildAndContinueButton() {
+
+        WebElement noButton = driver.findElement(By.xpath("//div//input[@value='No']"));
+        noButton.click();
+
+        WebElement continueButton = driver.findElement(By.className("govuk-button"));
+        continueButton.click();
+
+        return new WhatIsTheOtherParentsName(driver);
+    }
+}

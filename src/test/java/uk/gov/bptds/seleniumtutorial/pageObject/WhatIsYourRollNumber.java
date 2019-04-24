@@ -1,0 +1,29 @@
+package uk.gov.bptds.seleniumtutorial.pageObject;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class WhatIsYourRollNumber {
+    private WebDriver driver;
+
+    public WhatIsYourRollNumber(WebDriver driver) {
+
+        this.driver = driver;
+    }
+
+    public CheckYourAnswers enterRollNumber(String rollNumberDetails) {
+
+        WebElement enterRollNum = driver.findElement(By.xpath("//*[@id=\"roll-number\"]"));
+        enterRollNum.click();
+        enterRollNum.sendKeys(rollNumberDetails);
+
+        WebElement continueButton = driver.findElement(By.className("govuk-button"));
+        continueButton.click();
+
+        return new CheckYourAnswers(driver);
+    }
+
+
+
+}
